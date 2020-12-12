@@ -26,6 +26,9 @@
                     </p>
                 </div>
             {% endfor %}
+        {% if user.is_authenticated %}
+            <p><a href="#">Пройти тест</a></p>
+        {% endif %}
         </div>
         <br>
         {% include 'partial/pagination.html' %}
