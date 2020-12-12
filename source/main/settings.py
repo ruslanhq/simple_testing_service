@@ -130,6 +130,6 @@ STATICFILES_DIRS = (
 
 LOGIN_URL = "accounts:login"
 
-# LOGIN_REDIRECT_URL = "webapp:base.html"
+LOGIN_REDIRECT_URL = "webapp:index.html"
 
 

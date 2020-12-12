@@ -1,7 +1,21 @@
 from django.contrib import admin
 
+from webapp.forms import AnswerInlineFormSet
 from webapp.models import Test, Question, Answer
 
+
+class AnswerInline(admin.StackedInline):
+
+    model = Answer
+    formset = AnswerInlineFormSet
+    min_num = 2
+    extra = 0
+
+
+class QuestionAdmin(admin.ModelAdmin):
+
+    inlines = [AnswerInline]
+
+
 admin.site.register(Test)
-admin.site.register(Question)
-admin.site.register(Answer)
+admin.site.register(Question, QuestionAdmin)

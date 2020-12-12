@@ -1,23 +1,50 @@
-<!DOCTYPE html>
 {% load static %}
-
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static "/css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "/css/style.css" %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    {% block style_links %}{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <title>Тесты - {% block title %}{% endblock %}</title>
 </head>
 <body>
-<div class="container mt-3">
-    {% block content %}{% endblock %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">Тесты</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'index' %}">На главную</a>
+                <ul></ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item"><a href="#" class="nav-link">
+                            Привет, {{ request.user.username }}!
+                        </a></li>
+                        <li class="nav-item"><a href="{% url 'accounts:logout' %}" class="nav-link">Выход</a></li>
+                    {% else %}
+                        <li class="nav-item"><a href="{% url 'accounts:register' %}" class="nav-link">Регистрация</a></li>
+                        <li class="nav-item"><a href="{% url 'accounts:login' %}" class="nav-link">Вход</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <br>
+    {% block body %}
+    {% endblock %}
+    <br>
 </div>
-<script src={% static "/js/jquery-3.4.1.min.js" %}></script>
-<script src={% static "/js/popper.min.js" %}></script>
-<script src={% static "/js/bootstrap.min.js" %}></script>
-{% block script %}{% endblock %}
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
