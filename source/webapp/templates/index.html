@@ -12,18 +12,13 @@
                     <p class="list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                                 <h5><a href="{% url 'test_quest' test.pk %}">{{ test.title }}</a></h5>
-{#                            <h5 class="mb-1"><a href="{% url 'test_quest' test.pk %}">{{ test.title }}</a></h5>#}
                             <small class="text-center border p-1 alert-primary">
-{#                                <a href="{% url 'update_poll' poll.pk %}" class="text-success">Редактировать</a>#}
-{#                                <a href="{% url 'delete_poll' poll.pk %}" class="text-danger ml-4">Удалить</a> <br>#}
-{#                                {% if poll.choices.all %}#}
-{#                                    <a href="{% url 'pass_the_poll' poll.pk %}" class="text-primary">Пройти опрос</a>#}
-{#                                {% endif %}#}
-
-{#                                <a href="{% url 'statistics' poll.pk %}" class="text-dark ml-2">Статистика</a>#}
                             </small>
                         </div>
                         <small>Дата создания: {{ test.created_at }}</small>
+                    {% if user.is_authenticated %}
+                            <p><a href="{% url 'pass_choice' test.pk %}">Пройти тест</a></p>
+                    {% endif %}
                     </p>
                 </div>
             {% endfor %}

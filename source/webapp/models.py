@@ -17,6 +17,8 @@ class Test(models.Model):
 class Question(models.Model):
     test = models.ForeignKey(Test, related_name='questions', verbose_name='Тест', on_delete=models.CASCADE)
     text = models.TextField(max_length=250, verbose_name='Вопрос')
+    is_completed = models.BooleanField(default=False)
+
 
     def __str__(self):
         return self.text
@@ -38,4 +40,20 @@ class Answer(models.Model):
     class Meta:
         verbose_name = 'Ответ'
         verbose_name_plural = 'Ответы'
+
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, related_name='choices', on_delete=models.CASCADE, verbose_name='Вопрос')
+    choice = models.ForeignKey(Answer, related_name='choices', on_delete=models.CASCADE, verbose_name='Ответ')
+    create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
+
+    def __str__(self):
+        return '{} - {}'.format(self.question, self.choice)
+
+    class Meta:
+        verbose_name = 'Ответ'
+        verbose_name_plural = 'Ответы'
+
+
+
 

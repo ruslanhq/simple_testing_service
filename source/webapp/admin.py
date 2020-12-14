@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from webapp.forms import AnswerInlineFormSet
-from webapp.models import Test, Question, Answer
+from webapp.models import Test, Question, Answer, Choice
 
 
 class AnswerInline(admin.StackedInline):
@@ -19,3 +19,4 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Test)
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice)

@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from webapp.views import TestView, TestDetail
+from webapp.views import TestView, TestDetail, ChoiceView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('', TestView.as_view(), name='index'),
-    path('test_quest/<int:pk>/', TestDetail.as_view(), name='test_quest')
+    path('test_quest/<int:pk>/', TestDetail.as_view(), name='test_quest'),
+    path('pass_choice/<int:test_id>/', ChoiceView.as_view(), name='pass_choice'),
 ]
 
