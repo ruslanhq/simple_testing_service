@@ -1,0 +1,285 @@
+[
+{
+  "model": "webapp.test",
+  "pk": 2,
+  "fields": {
+    "title": "Медицина",
+    "description": "",
+    "created_at": "2020-12-12T13:39:10.950Z"
+  }
+},
+{
+  "model": "webapp.test",
+  "pk": 6,
+  "fields": {
+    "title": "Математика",
+    "description": "",
+    "created_at": "2020-12-13T17:13:12.377Z"
+  }
+},
+{
+  "model": "webapp.question",
+  "pk": 4,
+  "fields": {
+    "test": 2,
+    "text": "Симптомы депрессии"
+  }
+},
+{
+  "model": "webapp.question",
+  "pk": 7,
+  "fields": {
+    "test": 2,
+    "text": "Симптомы covid"
+  }
+},
+{
+  "model": "webapp.question",
+  "pk": 13,
+  "fields": {
+    "test": 6,
+    "text": "2+2 = ?"
+  }
+},
+{
+  "model": "webapp.question",
+  "pk": 14,
+  "fields": {
+    "test": 6,
+    "text": "5*5"
+  }
+},
+{
+  "model": "webapp.question",
+  "pk": 15,
+  "fields": {
+    "test": 6,
+    "text": "10-6 = ?"
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 6,
+  "fields": {
+    "question": 4,
+    "text": "Температура",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 7,
+  "fields": {
+    "question": 4,
+    "text": "Повышенное настроение",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 8,
+  "fields": {
+    "question": 4,
+    "text": "Рассторможенность действий",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 9,
+  "fields": {
+    "question": 4,
+    "text": "тест",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 10,
+  "fields": {
+    "question": 4,
+    "text": "Двигательная заторможенность",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 11,
+  "fields": {
+    "question": 4,
+    "text": "Снижение настроения",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 18,
+  "fields": {
+    "question": 7,
+    "text": "нет запаха",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 19,
+  "fields": {
+    "question": 7,
+    "text": "температура",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 20,
+  "fields": {
+    "question": 7,
+    "text": "нет симптомов",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 33,
+  "fields": {
+    "question": 13,
+    "text": "3",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 34,
+  "fields": {
+    "question": 13,
+    "text": "5",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 35,
+  "fields": {
+    "question": 13,
+    "text": "4",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 36,
+  "fields": {
+    "question": 13,
+    "text": "четыре",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 37,
+  "fields": {
+    "question": 14,
+    "text": "36",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 38,
+  "fields": {
+    "question": 14,
+    "text": "25",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 39,
+  "fields": {
+    "question": 14,
+    "text": "0",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 40,
+  "fields": {
+    "question": 15,
+    "text": "4",
+    "is_valid": true
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 41,
+  "fields": {
+    "question": 15,
+    "text": "5",
+    "is_valid": false
+  }
+},
+{
+  "model": "webapp.answer",
+  "pk": 42,
+  "fields": {
+    "question": 15,
+    "text": "11",
+    "is_valid": false
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$kUUCAQUpSFMe$6MDS2z/QF4I6JIDPHuExDDC4Tl0k4o1pE5Hz1VpRO5g=",
+    "last_login": "2020-12-14T15:02:16.736Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-12-12T08:14:18.299Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$q1rqVL8bnZl4$iacaKCd53Syh0LqLL0Lx3qchQSrYiWoFfZXsg7Nlbmk=",
+    "last_login": "2020-12-12T11:12:24.319Z",
+    "is_superuser": false,
+    "username": "test",
+    "first_name": "test",
+    "last_name": "test",
+    "email": "test@test.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-12-12T11:12:13.390Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$5Ns8LnhBdVyp$pRPzBsmewkjZcmHYSk2wE0xHzCNTPm6vw+mMWKr+kQ0=",
+    "last_login": "2020-12-14T11:52:38.422Z",
+    "is_superuser": false,
+    "username": "test322",
+    "first_name": "q",
+    "last_name": "q",
+    "email": "h.ruslan97@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-12-14T11:40:14.225Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
