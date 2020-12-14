@@ -32,7 +32,6 @@ class ChoiceView(LoginRequiredMixin, View):
 
     def get_object(self):
         test_pk = self.kwargs.get('test_id')
-        user = self.request.user
         question = Question.objects.filter(test_id=test_pk, choices__user__isnull=True)
         if not len(question) == 0:
             return get_object_or_404(question, pk=question.first().pk)
@@ -43,7 +42,6 @@ class ChoiceView(LoginRequiredMixin, View):
         user = self.request.user
         answer = get_object_or_404(Answer, pk=answer_id)
         question = Question.objects.filter(test_id=test_id, choices__user__isnull=True).first()
-        print(question)
         Choice.objects.create(question=question, choice=answer, user=user, is_completed=True)
         return redirect('pass_choice', test_id)
 
