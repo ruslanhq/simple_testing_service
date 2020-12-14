@@ -18,6 +18,8 @@
                         <small>Дата создания: {{ test.created_at }}</small>
                     {% if user.is_authenticated %}
                             <p><a href="{% url 'pass_choice' test.pk %}">Пройти тест</a></p>
+                            <p><a href="{% url 'reset' test.pk %}">Попробовать снова</a></p>
+                            <p><a href="{% url 'result' test.pk %}">Результаты</a></p>
                     {% endif %}
                     </p>
                 </div>

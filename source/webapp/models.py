@@ -20,7 +20,6 @@ class Question(models.Model):
     text = models.TextField(max_length=250, verbose_name='Вопрос')
     is_completed = models.BooleanField(default=False)
 
-
     def __str__(self):
         return self.text
 
@@ -56,7 +55,4 @@ class Choice(models.Model):
     class Meta:
         verbose_name = 'Ответ'
         verbose_name_plural = 'Ответы'
-
-
-
 

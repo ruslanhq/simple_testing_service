@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from webapp.views import TestView, TestDetail, ChoiceView
+from webapp.views import TestView, TestDetail, ChoiceView, ResultView, ResetResultView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +24,7 @@ urlpatterns = [
     path('', TestView.as_view(), name='index'),
     path('test_quest/<int:pk>/', TestDetail.as_view(), name='test_quest'),
     path('pass_choice/<int:test_id>/', ChoiceView.as_view(), name='pass_choice'),
+    path('result/<int:pk>/', ResultView.as_view(), name='result'),
+    path('reset/<int:pk>/', ResetResultView.as_view(), name= 'reset')
 ]
 
