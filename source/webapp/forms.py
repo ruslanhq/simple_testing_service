@@ -9,4 +9,3 @@ class AnswerInlineFormSet(forms.BaseInlineFormSet):
             if form.cleaned_data.get('is_valid'):
                 return
         raise forms.ValidationError("Должен быть хотя бы 1 правильный ответ.")
-

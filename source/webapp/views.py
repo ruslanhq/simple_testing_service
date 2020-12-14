@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseNotAllowed
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
@@ -21,7 +22,7 @@ class TestDetail(DetailView):
     model = Test
 
 
-class ChoiceView(View):
+class ChoiceView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         question = self.get_object()
         test_pk = kwargs.get('test_id')
@@ -31,7 +32,8 @@ class ChoiceView(View):
 
     def get_object(self):
         test_pk = self.kwargs.get('test_id')
-        question = Question.objects.filter(test_id=test_pk, is_completed=False)
+        user = self.request.user
+        question = Question.objects.filter(test_id=test_pk, choices__user__isnull=True)
         if not len(question) == 0:
             return get_object_or_404(question, pk=question.first().pk)
 
@@ -39,15 +41,14 @@ class ChoiceView(View):
         test_id = kwargs.get('test_id')
         answer_id = request.POST.get('answer')
         user = self.request.user
-        question = Question.objects.filter(test_id=test_id, is_completed=False).first()
         answer = get_object_or_404(Answer, pk=answer_id)
-        Choice.objects.create(question=question, choice=answer, user=user)
-        question.is_completed = True
-        question.save()
+        question = Question.objects.filter(test_id=test_id, choices__user__isnull=True).first()
+        print(question)
+        Choice.objects.create(question=question, choice=answer, user=user, is_completed=True)
         return redirect('pass_choice', test_id)
 
 
-class ResultView(View):
+class ResultView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         test = get_object_or_404(Test, pk=kwargs.get('pk'))
         user = self.request.user
@@ -58,16 +59,11 @@ class ResultView(View):
                                                        'choice_i': len(choice_in_valid), 'percent': percent})
 
 
-class ResetResultView(View):
+class ResetResultView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         test = get_object_or_404(Test, pk=kwargs.get('pk'))
         user = self.request.user
-        questions = Question.objects.filter(test_id=test, is_completed=True, choices__user=user)
         choices = Choice.objects.filter(user=user, question__test=test)
-
-        for question in questions:
-            question.is_completed = False
-            question.save()
 
         for choice in choices:
             choice.delete()
