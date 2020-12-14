@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -45,6 +46,8 @@ class Answer(models.Model):
 class Choice(models.Model):
     question = models.ForeignKey(Question, related_name='choices', on_delete=models.CASCADE, verbose_name='Вопрос')
     choice = models.ForeignKey(Answer, related_name='choices', on_delete=models.CASCADE, verbose_name='Ответ')
+    user = models.ForeignKey(User, related_name='choices', on_delete=models.PROTECT, verbose_name='Пользователь',
+                             blank=True, null=True)
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
 
     def __str__(self):
